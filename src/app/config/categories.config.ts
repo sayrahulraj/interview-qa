@@ -4,18 +4,16 @@ export interface CategoryGroup {
 }
 
 export const CATEGORIES: readonly CategoryGroup[] = [
-  {
-    name: 'Languages & Frameworks',
-    topics: ['Java 8 / 17 / 21', 'Spring Boot', 'Quarkus', 'JPA / Hibernate', 'Angular', 'TypeScript', 'HTML5', 'CSS3'],
-  },
+  { name: 'Languages & Frameworks', topics: ['Java', 'Spring Boot', 'Quarkus', 'Angular'] },
   {
     name: 'Architecture & Messaging',
-    topics: ['Microservices', 'Hexagonal Architecture', 'RESTful APIs', 'Event-Driven Design', 'Apache Kafka'],
+    topics: ['Microservices', 'Hexagonal Architecture', 'Kafka', 'REST Client', 'gRPC'],
   },
-  { name: 'API Security & Tooling', topics: ['JWT Authentication', 'Swagger / OpenAPI'] },
-  { name: 'Databases & Caching', topics: ['MS SQL Server', 'PostgreSQL', 'AWS RDS', 'Redis'] },
-  { name: 'DevOps & Testing', topics: ['CI/CD', 'JUnit', 'Mockito'] },
-  { name: 'AI Tools', topics: ['Claude AI', 'GitHub Copilot', 'Devin AI'] },
+  { name: 'Security & API Gateway', topics: ['JWT', 'OAuth2', 'Apigee'] },
+  { name: 'Databases & Persistence', topics: ['SQL', 'JPA / Hibernate'] },
+  { name: 'DevOps & Cloud', topics: ['CI/CD', 'Docker', 'Kubernetes', 'AWS'] },
+  { name: 'AI Tools', topics: ['Claude'] },
+  { name: 'Interview Essentials', topics: ['Self Introduction'] },
 ];
 
 export const GROUP_NAMES: readonly string[] = CATEGORIES.map((c) => c.name);
