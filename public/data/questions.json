@@ -5,18 +5,122 @@
       "group": "Interview Essentials",
       "topic": "Self Introduction",
       "question": "Tell me about yourself.",
-      "answer": "Hi, I'm Rahul Raj, a Java Full Stack Developer with more than 5.8 years of experience enterprise microservices, now also building in AI driven engineering workflows with Claude.\n\nI started my career at Tata Consultancy Services in January 2021 as a Graduate Trainee and worked there until January 2025. I worked on two projects there. The first was Cardinal Health Inc., USA, in the healthcare supply-chain domain, from January 2021 to May 2024. The second was State Farm, USA, in the insurance domain, from May 2024 to January 2025.\n\nIn January 2025, I joined Infosys as a Senior Associate Consultant. Since March 2025, I have been working on the Fiserv Inc., USA account, in the banking and card-payments domain. My project is Vision Next, Fiserv's next-generation card issuing and processing platform. It is cloud-native, API-first, and built on microservices, with real-time processing across the card lifecycle.\n\nMy tech stack on this project is Java and Quarkus in place of spring boot for microservices, Kafka, REST and gRPC clients, Angular for the frontend, and Apigee with JWT for API gateway and security.\n\nIn this project, I receive the feature HLD and LLD, convert them into the business need, identify which microservices are affected, and then implement the feature in the existing code. I also write the unit tests and do the troubleshooting for those changes.\n\nOn the Apigee side, I implement the API gateway layer, covering routing, security, and traffic management, so our backend APIs are exposed to consumers in a controlled and secure way. On the front end, I build Angular components that consume these APIs, so I work across both the backend and the UI.\n\nAlong with development, I work actively with Claude. I have completed the Claude Certified Architect certifications, both Foundations and Professional. I have also worked on creating project harnesses and agents.\n\nOne example is VisionNext.ai, an AI engineering assistant for our project that I created through prompting. It maintains a knowledge base of our services, architecture, and coding and testing rules. It loads context step by step instead of reading the whole codebase, so it saves tokens, follows our existing patterns, and leaves some controls with me like git commit, push the code.\n\nThat's a quick introduction about me. Thank you.",
+      "answer": "Hi, I'm Rahul Raj, a Java Full Stack Developer with more than 5.8 years of experience in enterprise microservices, now also building in AI driven engineering workflows with Claude.\n\nI started my career at TCS in January 2021 as a Graduate Trainee and worked there until January 2025. I worked on two projects there. The first was Cardinal Health, in the healthcare supply-chain domain, from January 2021 to May 2024. The second was State Farm, in the insurance domain, from May 2024 to January 2025.\n\nIn January 2025, I joined Infosys as a Senior Associate Consultant. Since March 2025, I have been working on the Fiserv account, in the banking and card-payments domain. My project is Vision Next, Fiserv's next-generation card issuing and processing platform. It is cloud-native, API-first, and built on microservices, with real-time processing across the card lifecycle.\n\nMy tech stack on this project is Java and Quarkus in place of spring boot for microservices, Kafka, REST and gRPC clients, Angular for the frontend, and Apigee with JWT for API gateway and security.\n\nIn this project, I receive the feature HLD and LLD, convert them into the business need, identify which microservices are affected, and then implement the feature in the existing code. I also write the unit tests and do the troubleshooting for those changes.\n\nOn the Apigee side, I implement the API gateway layer, covering routing, security, and traffic management, so our backend APIs are exposed to consumers in a controlled and secure way. On the front end, I build Angular components that consume these APIs, so I work across both the backend and the UI.\n\nAlong with development, I work actively with Claude. I have completed the Claude Certified Architect certifications, both Foundations and Professional. I have also worked on creating project harnesses and agents.\n\nOne example is VisionNext.ai, an AI engineering assistant for our project that I created through prompting. It maintains a knowledge base of our services, architecture, and coding and testing rules. It loads context step by step instead of reading the whole codebase, so it saves tokens, follows our existing patterns, and leaves some controls with me like git commit, push the code.\n\nThat's a quick introduction about me. Thank you.",
       "createdAt": "2026-10-03T10:00:00.000Z",
       "updatedAt": "2026-10-03T10:00:00.000Z"
     },
     {
-      "id": "what-are-microservices",
-      "group": "Architecture & Messaging",
-      "topic": "Microservices",
-      "question": "What are microservices, and how do services communicate with each other?",
-      "answer": "Microservices is an architectural style where a large application is divided into small, independent and loosely coupled services, with each service being responsible for a specific business capability.\n\nEach microservice is developed, deployed, scaled and maintained independently and each microservice contains their own database to maintain loose coupling.\n\nOne service can't access directly other's service database. Instead each microservice communicate through APIs or messaging system.\n\nMainly there are two approaches by which two or more services communicate with each other.\n\n1. **Synchronous Communication**, where a service sends request to another service and waits for response. This is synchronous communication. For synchronous communication, microservices use REST API, HTTP, gRPC and Web Client.\n2. **Asynchronous Communication**, where a service communicate each other through a message broker instead of directly waiting for each other's response. For asynchronous communication, microservices use Kafka, RabbitMQ, and Amazon SQS.",
-      "createdAt": "2026-10-03T10:05:00.000Z",
-      "updatedAt": "2026-10-03T10:05:00.000Z"
+      "id": "java-8-features",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "What are the main features of Java 8.",
+      "answer": "Java 8 is a major release. For interviews, remember these main features:\n\n```text\nJava 8\n│\n├── 1. Lambda Expressions\n├── 2. Functional Interfaces\n├── 3. Stream API\n├── 4. Optional\n├── 5. forEach()\n├── 6. Collectors\n└── 7. CompletableFuture\n```\n\n| # | Feature | In one line |\n| --- | --- | --- |\n| 1 | Lambda Expressions | A short way to pass behavior (a function) without an anonymous class |\n| 2 | Functional Interfaces | Interfaces with exactly one abstract method; lambdas implement them |\n| 3 | Stream API | Declarative processing of collections: filter, map, sorted, collect |\n| 4 | Optional | A container that makes a possibly-missing value explicit |\n| 5 | forEach() | Iterate a collection with a lambda or method reference |\n| 6 | Collectors | Collect stream results into a List, Set, Map and more |\n| 7 | CompletableFuture | Asynchronous programming without blocking the current thread |\n\n### 1. Lambda Expressions ⭐\n\nBefore Java 8, if we wanted to pass behavior, we commonly used anonymous classes.\n\n**Before Java 8**\n\n```java\nList<String> names = Arrays.asList(\"Rahul\", \"Amit\", \"John\");\n\nCollections.sort(names, new Comparator<String>() {\n    @Override\n    public int compare(String a, String b) {\n        return a.compareTo(b);\n    }\n});\n```\n\nThat's quite verbose.\n\n**Java 8**\n\n```java\nCollections.sort(names, (a, b) -> a.compareTo(b));\n```\n\nThe `(a, b) -> a.compareTo(b)` is a lambda expression.\n\n**Simple definition**\n\nA lambda expression allows us to represent a function/behavior in a concise way without creating an anonymous class.\n\nGeneral syntax:\n\n```text\n(parameters) -> expression\n```\n\nor:\n\n```text\n(parameters) -> {\n    // statements\n}\n```\n\nExample:\n\n```java\n(a, b) -> a + b\n```\n\n### 2. Functional Interface ⭐\n\nA functional interface is an interface that has exactly one abstract method.\n\nExample:\n\n```java\n@FunctionalInterface\ninterface Calculator {\n    int add(int a, int b);\n}\n```\n\nNow we can use a lambda:\n\n```java\nCalculator calculator = (a, b) -> a + b;\n\nSystem.out.println(calculator.add(10, 20));\n```\n\nOutput:\n\n```text\n30\n```\n\nJava provides many built-in functional interfaces:\n\n| Interface | Method | What it does |\n| --- | --- | --- |\n| `Predicate<T>` | `test(T)` | Takes a value, returns `true` or `false` |\n| `Function<T, R>` | `apply(T)` | Takes a value, returns a result |\n| `Consumer<T>` | `accept(T)` | Takes a value, returns nothing |\n| `Supplier<T>` | `get()` | Takes nothing, returns a value |\n| `UnaryOperator<T>` | `apply(T)` | Takes a value, returns the same type |\n| `BinaryOperator<T>` | `apply(T, T)` | Takes two values of one type, returns that type |\n\nFor example:\n\n```java\nPredicate<Integer> p = x -> x > 10;\n\nSystem.out.println(p.test(20)); // true\n```\n\n### 3. Stream API ⭐⭐⭐\n\nThis is one of the most important Java 8 features for interviews.\n\nStreams allow us to process collections in a more declarative way.\n\nSuppose:\n\n```java\nList<Integer> numbers =\n        Arrays.asList(10, 15, 20, 25, 30);\n```\n\nWe want numbers greater than 20.\n\n**Traditional approach**\n\n```java\nfor (Integer number : numbers) {\n    if (number > 20) {\n        System.out.println(number);\n    }\n}\n```\n\n**Java 8 Stream**\n\n```java\nnumbers.stream()\n       .filter(n -> n > 20)\n       .forEach(System.out::println);\n```\n\nOutput:\n\n```text\n25\n30\n```\n\nStream operations can be thought of as:\n\n```text\nCollection\n    ↓\n stream()\n    ↓\n filter()\n    ↓\n map()\n    ↓\n sorted()\n    ↓\n collect()\n```\n\nOperations like `filter()`, `map()` and `sorted()` are intermediate operations. They only run when a terminal operation such as `forEach()` or `collect()` is called. A stream does not modify the original collection.\n\n### 4. Optional ⭐\n\nOptional was introduced to provide a better way of representing a value that may or may not be present.\n\nWithout Optional:\n\n```java\nString name = getName();\n\nif (name != null) {\n    System.out.println(name);\n}\n```\n\nWith Optional:\n\n```java\nOptional<String> name = Optional.ofNullable(getName());\n\nname.ifPresent(System.out::println);\n```\n\nYou can also provide a default:\n\n```java\nString result = Optional.ofNullable(getName())\n        .orElse(\"Unknown\");\n```\n\nSo:\n\n```text\nOptional\n    ↓\nValue exists? ── Yes → use value\n       │\n       No\n       ↓\n   default value\n```\n\nIt helps make absence of a value explicit, although Optional is not a guarantee that all null-related problems disappear.\n\n### 5. forEach()\n\nJava 8 added `forEach()` to `Iterable`.\n\nInstead of:\n\n```java\nfor (String name : names) {\n    System.out.println(name);\n}\n```\n\nyou can write:\n\n```java\nnames.forEach(name -> System.out.println(name));\n```\n\nor:\n\n```java\nnames.forEach(System.out::println);\n```\n\n`System.out::println` is a method reference, a shorter form of the lambda `name -> System.out.println(name)`.\n\n### 6. Collectors\n\nCollectors is heavily used with Streams.\n\nFor example:\n\n```java\nList<String> result = names.stream()\n        .filter(name -> name.length() > 4)\n        .collect(Collectors.toList());\n```\n\nYou can also create maps:\n\n```java\nMap<Integer, String> map = employees.stream()\n        .collect(Collectors.toMap(\n                Employee::getId,\n                Employee::getName\n        ));\n```\n\nOther commonly used collectors:\n\n| Collector | What it does |\n| --- | --- |\n| `Collectors.toList()` | Collects elements into a List |\n| `Collectors.toSet()` | Collects elements into a Set |\n| `Collectors.toMap()` | Collects elements into a Map |\n| `Collectors.groupingBy()` | Groups elements by a key |\n| `Collectors.partitioningBy()` | Splits elements into two groups: true and false |\n| `Collectors.joining()` | Joins strings into one string |\n| `Collectors.counting()` | Counts the elements |\n\n### 7. CompletableFuture\n\nJava 8 introduced `CompletableFuture` for asynchronous programming.\n\nExample:\n\n```java\nCompletableFuture<String> future =\n        CompletableFuture.supplyAsync(() -> \"Hello\");\n\nfuture.thenAccept(System.out::println);\n```\n\nConceptually:\n\n```text\nMain Thread\n    │\n    ├──── start async task ────► Another thread\n    │                                │\n    │                                ▼\n    │                          process operation\n    │                                │\n    ◄──────────── result ────────────┘\n```\n\nThis is useful when we don't want the current thread to block while waiting for some asynchronous operation.\n\n**Also worth knowing:** Java 8 also added default and static methods in interfaces, and the new Date and Time API (`java.time`).",
+      "tags": [
+        "Java 8",
+        "Lambda",
+        "Stream API",
+        "Optional",
+        "Collectors",
+        "CompletableFuture"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T10:30:00.000Z",
+      "updatedAt": "2026-10-03T10:30:00.000Z"
+    },
+    {
+      "id": "java-17-features",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "What are the main features of Java 17?",
+      "answer": "Java 17 is a long-term support (LTS) release. These three features are the ones to remember:\n\n| # | Feature | In one line | Finalized in |\n| --- | --- | --- | --- |\n| 1 | Record | A concise way to create an immutable data class | Java 16 |\n| 2 | Sealed Classes | Restrict which classes can extend or implement a class | Java 17 |\n| 3 | Pattern Matching for `instanceof` | Declare the variable inside `instanceof`, no explicit cast | Java 16 |\n\nRecords and pattern matching for `instanceof` became final in Java 16, and sealed classes became final in Java 17. All three are available in Java 17.\n\n### 1. Record\n\nA record is a concise way to create an immutable data class. Java automatically provides constructor, getters (`name()`), `equals()`, `hashCode()`, and `toString()`.\n\n```java\nrecord Employee(int id, String name) {}\n\nEmployee emp = new Employee(101, \"Rahul\");\n\nSystem.out.println(emp.id());    // 101\nSystem.out.println(emp.name());  // Rahul\n```\n\nPrinting the record itself uses the generated `toString()`:\n\n```java\nSystem.out.println(emp);  // Employee[id=101, name=Rahul]\n```\n\nA record is implicitly `final`, and its fields cannot be changed after the object is created.\n\n### 2. Sealed Classes\n\nA sealed class restricts which classes can extend or implement it. This is useful when you want to control the inheritance hierarchy.\n\n```java\nsealed class Vehicle permits Car, Bike {}\n\nfinal class Car extends Vehicle {}\n\nfinal class Bike extends Vehicle {}\n```\n\nHere, only `Car` and `Bike` are allowed to extend `Vehicle`.\n\nEach permitted subclass must be declared `final`, `sealed` or `non-sealed`.\n\n### 3. Pattern Matching for `instanceof`\n\nJava 17 allows you to declare the variable directly inside `instanceof`, avoiding explicit casting.\n\n**Before Java 17:**\n\n```java\nif (obj instanceof String) {\n    String str = (String) obj;\n    System.out.println(str.length());\n}\n```\n\n**Java 17:**\n\n```java\nif (obj instanceof String str) {\n    System.out.println(str.length());\n}\n```\n\nHere, `str` is automatically cast to `String` and can be used directly.",
+      "tags": [
+        "Java 17",
+        "Record",
+        "Sealed Classes",
+        "Pattern Matching"
+      ],
+      "relatedIds": [
+        "java-8-features"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T11:00:00.000Z",
+      "updatedAt": "2026-10-03T11:00:00.000Z"
+    },
+    {
+      "id": "java-21-features",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "What are the main features of Java 21?",
+      "answer": "Java 21 is a long-term support (LTS) release. These four features are the ones to remember:\n\n| # | Feature | In one line |\n| --- | --- | --- |\n| 1 | Virtual Threads | Lightweight JVM-managed threads for many concurrent I/O tasks |\n| 2 | Pattern Matching for `switch` | `switch` can match types and patterns directly |\n| 3 | Record Patterns | Deconstruct a record directly into its components |\n| 4 | Sequenced Collections | Common `getFirst()`, `getLast()` and `reversed()` for ordered collections |\n\nAll four are final (not preview) in Java 21.\n\n### 1. Virtual Threads\n\nVirtual threads are lightweight threads managed by the JVM, useful for handling a large number of concurrent I/O operations without creating many expensive platform threads.\n\n```java\nThread.startVirtualThread(() -> {\n    System.out.println(\"Running in virtual thread\");\n});\n```\n\nVirtual threads are daemon threads, so if `main` finishes first the JVM can exit before the message is printed. In a small demo, keep the thread and call `join()`:\n\n```java\nThread t = Thread.startVirtualThread(() -> {\n    System.out.println(\"Running in virtual thread\");\n});\nt.join();\n```\n\n### 2. Pattern Matching for `switch`\n\nJava 21 allows `switch` to directly match types and patterns, making type-based logic cleaner and reducing `instanceof` checks.\n\n```java\nstatic String getType(Object obj) {\n    return switch (obj) {\n        case Integer i -> \"Integer: \" + i;\n        case String s  -> \"String: \" + s;\n        case null      -> \"Null\";\n        default        -> \"Other\";\n    };\n}\n```\n\nFor example, `getType(5)` returns `Integer: 5`, `getType(\"hi\")` returns `String: hi`, `getType(null)` returns `Null`, and `getType(2.5)` returns `Other`.\n\n`case null` handles a null value inside the `switch`. Without it, a `switch` on a null value throws `NullPointerException`.\n\n### 3. Record Patterns\n\nRecord patterns allow you to deconstruct a record directly and access its components without calling individual accessor methods.\n\n```java\nrecord Employee(String name, int age) {}\n\nEmployee emp = new Employee(\"Rahul\", 30);\n\nif (emp instanceof Employee(String name, int age)) {\n    System.out.println(name + \" - \" + age);\n}\n```\n\nOutput:\n\n```text\nRahul - 30\n```\n\n### 4. Sequenced Collections\n\nJava 21 introduced Sequenced Collections, providing common operations such as `getFirst()`, `getLast()`, and `reversed()` for collections with a defined encounter order.\n\n```java\nList<String> names = new ArrayList<>(\n        List.of(\"Rahul\", \"Amit\", \"Vikas\")\n);\n\nSystem.out.println(names.getFirst());  // Rahul\nSystem.out.println(names.getLast());   // Vikas\n\nSystem.out.println(names.reversed());\n// [Vikas, Amit, Rahul]\n```\n\nNote: The method is `reversed()`, not `reverse()`. It returns a reverse-ordered view of the collection.\n\nThis is done with the new interfaces `SequencedCollection`, `SequencedSet` and `SequencedMap`, which `List`, `Deque`, `LinkedHashSet`, `LinkedHashMap` and others implement.",
+      "tags": [
+        "Java 21",
+        "Virtual Threads",
+        "Pattern Matching",
+        "Record Patterns",
+        "Sequenced Collections"
+      ],
+      "relatedIds": [
+        "java-17-features",
+        "java-8-features"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T11:05:00.000Z",
+      "updatedAt": "2026-10-03T11:05:00.000Z"
+    },
+    {
+      "id": "first-non-repeating-char-java-streams",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "How do you find the first non-repeating character in a string using Java 8 Streams?",
+      "answer": "```java\nimport java.util.LinkedHashMap;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.stream.Collectors;\n\npublic class Main {\n\n    public static void main(String[] args) {\n\n        String str = \"hoqueh\";\n\n        Optional<Character> ch = str.chars()\n                .mapToObj(c -> (char) c)\n                .collect(Collectors.groupingBy(\n                        c -> c,\n                        LinkedHashMap::new,\n                        Collectors.counting()\n                ))\n                .entrySet()\n                .stream()\n                .filter(e -> e.getValue() == 1)\n                .findFirst()\n                .map(Map.Entry::getKey);\n\n        System.out.println(\"First repeating char is: \" + ch.get());\n    }\n}\n```\n\nOutput:\n\n```text\nFirst repeating char is: o\n```\n\n**How it works**\n\n1. `str.chars()` gives a stream of the character codes (`IntStream`).\n2. `mapToObj(c -> (char) c)` converts each code to a `Character`.\n3. `groupingBy(c -> c, LinkedHashMap::new, Collectors.counting())` counts how many times each character appears. `LinkedHashMap` keeps the characters in the order they first appeared.\n4. `entrySet().stream().filter(e -> e.getValue() == 1)` keeps only the characters that appear exactly once.\n5. `findFirst()` takes the first of them.\n6. `map(Map.Entry::getKey)` extracts the character, wrapped in an `Optional`.\n\nFor `\"hoqueh\"` the map is `{h=2, o=1, q=1, u=1, e=1}`, so the first character with a count of 1 is `o`.\n\nThe only difference from the \"first repeating character\" solution is the filter: `== 1` finds the first non-repeating (unique) character, while `> 1` finds the first character that repeats.\n\n**Notes**\n\n- The message in `println` says \"First repeating char\", but this code finds the first non-repeating character. A clearer message is `\"First non-repeating char is: \"`.\n- `ch.get()` throws `NoSuchElementException` when every character repeats. Check `ch.isPresent()` or use `ch.orElse(...)` first.",
+      "tags": [
+        "Java 8",
+        "Stream API",
+        "Collectors"
+      ],
+      "relatedIds": [
+        "java-8-features"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T10:45:00.000Z",
+      "updatedAt": "2026-10-03T10:45:00.000Z"
+    },
+    {
+      "id": "first-non-repeating-number-java-streams",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "How do you find the first non-repeating number in a list using Java 8 Streams?",
+      "answer": "```java\nimport java.util.Arrays;\nimport java.util.LinkedHashMap;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.stream.Collectors;\n\npublic class FirstNonRepeatingNumber {\n\n    public static void main(String[] args) {\n\n        List<Integer> numbers = Arrays.asList(4, 5, 1, 4, 5, 2, 1, 3);\n\n        Optional<Integer> number = numbers.stream()\n                .collect(Collectors.groupingBy(\n                        n -> n,\n                        LinkedHashMap::new,\n                        Collectors.counting()\n                ))\n                .entrySet()\n                .stream()\n                .filter(e -> e.getValue() == 1)\n                .findFirst()\n                .map(Map.Entry::getKey);\n\n        System.out.println(\"First non-repeating number is: \" + number.get());\n    }\n}\n```\n\nOutput:\n\n```text\nFirst non-repeating number is: 2\n```\n\n**How it works**\n\n1. `numbers.stream()` creates a stream of the `Integer` values. Unlike the string version, there is no `chars()` or `mapToObj` step.\n2. `groupingBy(n -> n, LinkedHashMap::new, Collectors.counting())` counts how many times each number appears. `LinkedHashMap` keeps the numbers in the order they first appeared.\n3. `entrySet().stream().filter(e -> e.getValue() == 1)` keeps only the numbers that appear exactly once.\n4. `findFirst()` takes the first of them.\n5. `map(Map.Entry::getKey)` extracts the number, wrapped in an `Optional`.\n\nFor `[4, 5, 1, 4, 5, 2, 1, 3]` the map is `{4=2, 5=2, 1=2, 2=1, 3=1}`, so the first number with a count of 1 is `2`.\n\n**Note**\n\n`number.get()` throws `NoSuchElementException` when every number repeats. Check `number.isPresent()` or use `number.orElse(...)` first.",
+      "tags": [
+        "Java 8",
+        "Stream API",
+        "Collectors"
+      ],
+      "relatedIds": [
+        "first-non-repeating-char-java-streams"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T10:50:00.000Z",
+      "updatedAt": "2026-10-03T10:50:00.000Z"
+    },
+    {
+      "id": "first-non-repeating-word-java-streams",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "How do you find the first non-repeating word in a sentence using Java 8 Streams?",
+      "answer": "```java\nimport java.util.Arrays;\nimport java.util.LinkedHashMap;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.stream.Collectors;\n\npublic class Main {\n\n    public static void main(String[] args) {\n\n        String str = \"java spring Java kafka spring docker\";\n\n        Optional<String> word = Arrays.stream(str.split(\"\\\\s+\"))\n            .map(String::toLowerCase)\n                .collect(Collectors.groupingBy(\n                        w -> w,\n                        LinkedHashMap::new,\n                        Collectors.counting()\n                ))\n                .entrySet()\n                .stream()\n                .filter(e -> e.getValue() == 1)\n                .findFirst()\n                .map(Map.Entry::getKey);\n\n        System.out.println(\"First non-repeating word is: \" + word.get());\n    }\n}\n```\n\nOutput:\n\n```text\nFirst non-repeating word is: kafka\n```\n\n**How it works**\n\n1. `str.split(\"\\\\s+\")` splits the sentence into words on one or more spaces.\n2. `Arrays.stream(...)` turns the array of words into a stream.\n3. `map(String::toLowerCase)` makes the comparison case-insensitive, so `java` and `Java` count as the same word.\n4. `groupingBy(w -> w, LinkedHashMap::new, Collectors.counting())` counts how many times each word appears. `LinkedHashMap` keeps the words in the order they first appeared.\n5. `entrySet().stream().filter(e -> e.getValue() == 1)` keeps only the words that appear exactly once.\n6. `findFirst()` takes the first of them.\n7. `map(Map.Entry::getKey)` extracts the word, wrapped in an `Optional`.\n\nFor `\"java spring Java kafka spring docker\"` the map is `{java=2, spring=2, kafka=1, docker=1}`, so the first word with a count of 1 is `kafka`.\n\n**Notes**\n\n- Because of `toLowerCase()`, the word returned is always lowercase. Remove that line if you want `Java` and `java` treated as different words.\n- `word.get()` throws `NoSuchElementException` when every word repeats. Check `word.isPresent()` or use `word.orElse(...)` first.",
+      "tags": [
+        "Java 8",
+        "Stream API",
+        "Collectors"
+      ],
+      "relatedIds": [
+        "first-non-repeating-char-java-streams",
+        "first-non-repeating-number-java-streams"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T10:55:00.000Z",
+      "updatedAt": "2026-10-03T10:55:00.000Z"
     },
     {
       "id": "tight-coupling-problems",
@@ -87,6 +191,15 @@
       "updatedAt": "2026-10-03T10:14:00.000Z"
     },
     {
+      "id": "what-are-microservices",
+      "group": "Architecture & Messaging",
+      "topic": "Microservices",
+      "question": "What are microservices, and how do services communicate with each other?",
+      "answer": "Microservices is an architectural style where a large application is divided into small, independent and loosely coupled services, with each service being responsible for a specific business capability.\n\nEach microservice is developed, deployed, scaled and maintained independently and each microservice contains their own database to maintain loose coupling.\n\nOne service can't access directly other's service database. Instead each microservice communicate through APIs or messaging system.\n\nMainly there are two approaches by which two or more services communicate with each other.\n\n1. **Synchronous Communication**, where a service sends request to another service and waits for response. This is synchronous communication. For synchronous communication, microservices use REST API, HTTP, gRPC and Web Client.\n2. **Asynchronous Communication**, where a service communicate each other through a message broker instead of directly waiting for each other's response. For asynchronous communication, microservices use Kafka, RabbitMQ, and Amazon SQS.",
+      "createdAt": "2026-10-03T10:05:00.000Z",
+      "updatedAt": "2026-10-03T10:05:00.000Z"
+    },
+    {
       "id": "what-is-kafka",
       "group": "Architecture & Messaging",
       "topic": "Kafka",
@@ -110,61 +223,6 @@
       ],
       "createdAt": "2026-10-03T10:21:00.000Z",
       "updatedAt": "2026-10-03T10:21:00.000Z"
-    },
-    {
-      "id": "java-8-features",
-      "group": "Languages & Frameworks",
-      "topic": "Java",
-      "question": "Explain the main features of Java 8.",
-      "answer": "Java 8 is a major release. For interviews, remember these main features:\n\n```text\nJava 8\n│\n├── 1. Lambda Expressions\n├── 2. Functional Interfaces\n├── 3. Stream API\n├── 4. Optional\n├── 5. forEach()\n├── 6. Collectors\n└── 7. CompletableFuture\n```\n\n| # | Feature | In one line |\n| --- | --- | --- |\n| 1 | Lambda Expressions | A short way to pass behavior (a function) without an anonymous class |\n| 2 | Functional Interfaces | Interfaces with exactly one abstract method; lambdas implement them |\n| 3 | Stream API | Declarative processing of collections: filter, map, sorted, collect |\n| 4 | Optional | A container that makes a possibly-missing value explicit |\n| 5 | forEach() | Iterate a collection with a lambda or method reference |\n| 6 | Collectors | Collect stream results into a List, Set, Map and more |\n| 7 | CompletableFuture | Asynchronous programming without blocking the current thread |\n\n### 1. Lambda Expressions ⭐\n\nBefore Java 8, if we wanted to pass behavior, we commonly used anonymous classes.\n\n**Before Java 8**\n\n```java\nList<String> names = Arrays.asList(\"Rahul\", \"Amit\", \"John\");\n\nCollections.sort(names, new Comparator<String>() {\n    @Override\n    public int compare(String a, String b) {\n        return a.compareTo(b);\n    }\n});\n```\n\nThat's quite verbose.\n\n**Java 8**\n\n```java\nCollections.sort(names, (a, b) -> a.compareTo(b));\n```\n\nThe `(a, b) -> a.compareTo(b)` is a lambda expression.\n\n**Simple definition**\n\nA lambda expression allows us to represent a function/behavior in a concise way without creating an anonymous class.\n\nGeneral syntax:\n\n```text\n(parameters) -> expression\n```\n\nor:\n\n```text\n(parameters) -> {\n    // statements\n}\n```\n\nExample:\n\n```java\n(a, b) -> a + b\n```\n\n### 2. Functional Interface ⭐\n\nA functional interface is an interface that has exactly one abstract method.\n\nExample:\n\n```java\n@FunctionalInterface\ninterface Calculator {\n    int add(int a, int b);\n}\n```\n\nNow we can use a lambda:\n\n```java\nCalculator calculator = (a, b) -> a + b;\n\nSystem.out.println(calculator.add(10, 20));\n```\n\nOutput:\n\n```text\n30\n```\n\nJava provides many built-in functional interfaces:\n\n| Interface | Method | What it does |\n| --- | --- | --- |\n| `Predicate<T>` | `test(T)` | Takes a value, returns `true` or `false` |\n| `Function<T, R>` | `apply(T)` | Takes a value, returns a result |\n| `Consumer<T>` | `accept(T)` | Takes a value, returns nothing |\n| `Supplier<T>` | `get()` | Takes nothing, returns a value |\n| `UnaryOperator<T>` | `apply(T)` | Takes a value, returns the same type |\n| `BinaryOperator<T>` | `apply(T, T)` | Takes two values of one type, returns that type |\n\nFor example:\n\n```java\nPredicate<Integer> p = x -> x > 10;\n\nSystem.out.println(p.test(20)); // true\n```\n\n### 3. Stream API ⭐⭐⭐\n\nThis is one of the most important Java 8 features for interviews.\n\nStreams allow us to process collections in a more declarative way.\n\nSuppose:\n\n```java\nList<Integer> numbers =\n        Arrays.asList(10, 15, 20, 25, 30);\n```\n\nWe want numbers greater than 20.\n\n**Traditional approach**\n\n```java\nfor (Integer number : numbers) {\n    if (number > 20) {\n        System.out.println(number);\n    }\n}\n```\n\n**Java 8 Stream**\n\n```java\nnumbers.stream()\n       .filter(n -> n > 20)\n       .forEach(System.out::println);\n```\n\nOutput:\n\n```text\n25\n30\n```\n\nStream operations can be thought of as:\n\n```text\nCollection\n    ↓\n stream()\n    ↓\n filter()\n    ↓\n map()\n    ↓\n sorted()\n    ↓\n collect()\n```\n\nOperations like `filter()`, `map()` and `sorted()` are intermediate operations. They only run when a terminal operation such as `forEach()` or `collect()` is called. A stream does not modify the original collection.\n\n### 4. Optional ⭐\n\nOptional was introduced to provide a better way of representing a value that may or may not be present.\n\nWithout Optional:\n\n```java\nString name = getName();\n\nif (name != null) {\n    System.out.println(name);\n}\n```\n\nWith Optional:\n\n```java\nOptional<String> name = Optional.ofNullable(getName());\n\nname.ifPresent(System.out::println);\n```\n\nYou can also provide a default:\n\n```java\nString result = Optional.ofNullable(getName())\n        .orElse(\"Unknown\");\n```\n\nSo:\n\n```text\nOptional\n    ↓\nValue exists? ── Yes → use value\n       │\n       No\n       ↓\n   default value\n```\n\nIt helps make absence of a value explicit, although Optional is not a guarantee that all null-related problems disappear.\n\n### 5. forEach()\n\nJava 8 added `forEach()` to `Iterable`.\n\nInstead of:\n\n```java\nfor (String name : names) {\n    System.out.println(name);\n}\n```\n\nyou can write:\n\n```java\nnames.forEach(name -> System.out.println(name));\n```\n\nor:\n\n```java\nnames.forEach(System.out::println);\n```\n\n`System.out::println` is a method reference, a shorter form of the lambda `name -> System.out.println(name)`.\n\n### 6. Collectors\n\nCollectors is heavily used with Streams.\n\nFor example:\n\n```java\nList<String> result = names.stream()\n        .filter(name -> name.length() > 4)\n        .collect(Collectors.toList());\n```\n\nYou can also create maps:\n\n```java\nMap<Integer, String> map = employees.stream()\n        .collect(Collectors.toMap(\n                Employee::getId,\n                Employee::getName\n        ));\n```\n\nOther commonly used collectors:\n\n| Collector | What it does |\n| --- | --- |\n| `Collectors.toList()` | Collects elements into a List |\n| `Collectors.toSet()` | Collects elements into a Set |\n| `Collectors.toMap()` | Collects elements into a Map |\n| `Collectors.groupingBy()` | Groups elements by a key |\n| `Collectors.partitioningBy()` | Splits elements into two groups: true and false |\n| `Collectors.joining()` | Joins strings into one string |\n| `Collectors.counting()` | Counts the elements |\n\n### 7. CompletableFuture\n\nJava 8 introduced `CompletableFuture` for asynchronous programming.\n\nExample:\n\n```java\nCompletableFuture<String> future =\n        CompletableFuture.supplyAsync(() -> \"Hello\");\n\nfuture.thenAccept(System.out::println);\n```\n\nConceptually:\n\n```text\nMain Thread\n    │\n    ├──── start async task ────► Another thread\n    │                                │\n    │                                ▼\n    │                          process operation\n    │                                │\n    ◄──────────── result ────────────┘\n```\n\nThis is useful when we don't want the current thread to block while waiting for some asynchronous operation.\n\n**Also worth knowing:** Java 8 also added default and static methods in interfaces, and the new Date and Time API (`java.time`).",
-      "tags": [
-        "Java 8",
-        "Lambda",
-        "Stream API",
-        "Optional",
-        "Collectors",
-        "CompletableFuture"
-      ],
-      "codeLanguage": "java",
-      "createdAt": "2026-10-03T10:30:00.000Z",
-      "updatedAt": "2026-10-03T10:30:00.000Z"
-    },
-    {
-      "id": "first-non-repeating-char-java-streams",
-      "group": "Languages & Frameworks",
-      "topic": "Java",
-      "question": "How do you find the first non-repeating character in a string using Java 8 Streams?",
-      "answer": "```java\nimport java.util.LinkedHashMap;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.stream.Collectors;\n\npublic class Main {\n\n    public static void main(String[] args) {\n\n        String str = \"hoqueh\";\n\n        Optional<Character> ch = str.chars()\n                .mapToObj(c -> (char) c)\n                .collect(Collectors.groupingBy(\n                        c -> c,\n                        LinkedHashMap::new,\n                        Collectors.counting()\n                ))\n                .entrySet()\n                .stream()\n                .filter(e -> e.getValue() == 1)\n                .findFirst()\n                .map(Map.Entry::getKey);\n\n        System.out.println(\"First repeating char is: \" + ch.get());\n    }\n}\n```\n\nOutput:\n\n```text\nFirst repeating char is: o\n```\n\n**How it works**\n\n1. `str.chars()` gives a stream of the character codes (`IntStream`).\n2. `mapToObj(c -> (char) c)` converts each code to a `Character`.\n3. `groupingBy(c -> c, LinkedHashMap::new, Collectors.counting())` counts how many times each character appears. `LinkedHashMap` keeps the characters in the order they first appeared.\n4. `entrySet().stream().filter(e -> e.getValue() == 1)` keeps only the characters that appear exactly once.\n5. `findFirst()` takes the first of them.\n6. `map(Map.Entry::getKey)` extracts the character, wrapped in an `Optional`.\n\nFor `\"hoqueh\"` the map is `{h=2, o=1, q=1, u=1, e=1}`, so the first character with a count of 1 is `o`.\n\nThe only difference from the \"first repeating character\" solution is the filter: `== 1` finds the first non-repeating (unique) character, while `> 1` finds the first character that repeats.\n\n**Notes**\n\n- The message in `println` says \"First repeating char\", but this code finds the first non-repeating character. A clearer message is `\"First non-repeating char is: \"`.\n- `ch.get()` throws `NoSuchElementException` when every character repeats. Check `ch.isPresent()` or use `ch.orElse(...)` first.",
-      "tags": [
-        "Java 8",
-        "Stream API",
-        "Collectors"
-      ],
-      "relatedIds": [
-        "first-repeating-char-java-streams",
-        "java-8-features"
-      ],
-      "codeLanguage": "java",
-      "createdAt": "2026-10-03T10:45:00.000Z",
-      "updatedAt": "2026-10-03T10:45:00.000Z"
-    },    
-    {
-      "id": "first-non-repeating-number-java-streams",
-      "group": "Languages & Frameworks",
-      "topic": "Java",
-      "question": "How do you find the first non-repeating number in a list using Java 8 Streams?",
-      "answer": "```java\nimport java.util.Arrays;\nimport java.util.LinkedHashMap;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.stream.Collectors;\n\npublic class FirstNonRepeatingNumber {\n\n    public static void main(String[] args) {\n\n        List<Integer> numbers = Arrays.asList(4, 5, 1, 4, 5, 2, 1, 3);\n\n        Optional<Integer> number = numbers.stream()\n                .collect(Collectors.groupingBy(\n                        n -> n,\n                        LinkedHashMap::new,\n                        Collectors.counting()\n                ))\n                .entrySet()\n                .stream()\n                .filter(e -> e.getValue() == 1)\n                .findFirst()\n                .map(Map.Entry::getKey);\n\n        System.out.println(\"First non-repeating number is: \" + number.get());\n    }\n}\n```\n\nOutput:\n\n```text\nFirst non-repeating number is: 2\n```\n\n**How it works**\n\n1. `numbers.stream()` creates a stream of the `Integer` values. Unlike the string version, there is no `chars()` or `mapToObj` step.\n2. `groupingBy(n -> n, LinkedHashMap::new, Collectors.counting())` counts how many times each number appears. `LinkedHashMap` keeps the numbers in the order they first appeared.\n3. `entrySet().stream().filter(e -> e.getValue() == 1)` keeps only the numbers that appear exactly once.\n4. `findFirst()` takes the first of them.\n5. `map(Map.Entry::getKey)` extracts the number, wrapped in an `Optional`.\n\nFor `[4, 5, 1, 4, 5, 2, 1, 3]` the map is `{4=2, 5=2, 1=2, 2=1, 3=1}`, so the first number with a count of 1 is `2`.\n\n**Note**\n\n`number.get()` throws `NoSuchElementException` when every number repeats. Check `number.isPresent()` or use `number.orElse(...)` first.",
-      "tags": [
-        "Java 8",
-        "Stream API",
-        "Collectors"
-      ],
-      "relatedIds": [
-        "first-non-repeating-char-java-streams"
-      ],
-      "codeLanguage": "java",
-      "createdAt": "2026-10-03T10:50:00.000Z",
-      "updatedAt": "2026-10-03T10:50:00.000Z"
     }
   ]
 }
