@@ -123,6 +123,38 @@
       "updatedAt": "2026-10-03T10:55:00.000Z"
     },
     {
+      "id": "longest-substring-without-repeating-characters",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "How do you find the longest substring without repeating characters in Java?",
+      "answer": "```java\nimport java.util.*;\nclass Main {\n    public static void main(String[] args) {\n        String s = \"abcabcbb\";\n        Set<Character> set = new HashSet<>();\n\n        int left = 0;\n        int maxLength = 0;\n        int start = 0;\n\n        for (int right = 0; right < s.length(); right++) {\n\n            char ch = s.charAt(right);\n\n            while (set.contains(ch)) {\n                set.remove(s.charAt(left));\n                left++;\n            }\n\n            set.add(ch);\n\n            if (right - left + 1 > maxLength) {\n                maxLength = right - left + 1;\n                start = left;\n            }\n        }\n\n        System.out.println(s.substring(start, start + maxLength));\n    }\n}\n```\n\nOutput:\n\n```text\nabc\n```\n\n**How it works (sliding window)**\n\n1. Two pointers, `left` and `right`, mark a window. The `set` holds the characters currently inside the window, so the window never contains a repeated character.\n2. For each `right`, take the character `ch`.\n3. While `set` already contains `ch`, remove the character at `left` from the set and move `left` forward. This shrinks the window from the left until the duplicate is gone.\n4. Add `ch` to the set.\n5. If the window `right - left + 1` is longer than `maxLength`, save the new length and remember `start = left`.\n6. At the end, `s.substring(start, start + maxLength)` is the longest substring without repeating characters.\n\nFor `\"abcabcbb\"` the window grows to `abc` (length 3). When the second `a` arrives, the window shrinks from the left and moves on, and it never gets longer than 3, so the answer is `abc`.\n\nOther inputs: `\"bbbbb\"` gives `b`, and `\"pwwkew\"` gives `wke`.\n\n**Complexity**\n\n- Time: O(n). Each character is added to the set once and removed at most once.\n- Space: O(k), where k is the number of distinct characters in the window.\n\n**Note**\n\nIf there are several substrings with the same maximum length, this returns the first one. If you only need the length, print `maxLength` instead of the substring.",
+      "tags": [
+        "Sliding Window",
+        "HashSet",
+        "String"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T11:40:00.000Z",
+      "updatedAt": "2026-10-03T11:40:00.000Z"
+    },
+    {
+      "id": "first-non-repeating-number-hashmap",
+      "group": "Languages & Frameworks",
+      "topic": "Java",
+      "question": "How do you find the first non-repeating number in a list without using streams?",
+      "answer": "```java\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n\n        List<Integer> numbers = Arrays.asList(1, 2, 3, 2, 1, 4, 3);\n\n        Map<Integer, Integer> countMap = new HashMap<>();\n\n        for (Integer num : numbers) {\n            countMap.put(num, countMap.getOrDefault(num, 0) + 1);\n        }\n\n        for (Integer num : numbers) {\n            if (countMap.get(num) == 1) {\n                System.out.println(num);\n                break;\n            }\n        }\n    }\n}\n```\n\nOutput:\n\n```text\n4\n```\n\n**How it works**\n\n1. The first loop counts how many times each number appears. `countMap.getOrDefault(num, 0) + 1` starts a new number at 1 and adds 1 each time it is seen again.\n2. The second loop goes through the original list in order and prints the first number whose count is 1, then stops with `break`.\n\nFor `[1, 2, 3, 2, 1, 4, 3]` the map is `{1=2, 2=2, 3=2, 4=1}`, so the first number with a count of 1 is `4`.\n\nThe map only stores the counts. The order comes from looping over the original list the second time, so the answer is the first non-repeating number in list order.\n\n**Complexity**\n\n- Time: O(n), two passes over the list.\n- Space: O(k), where k is the number of distinct numbers.\n\n**Note**\n\nIf every number repeats, nothing is printed.",
+      "tags": [
+        "HashMap",
+        "Collections"
+      ],
+      "relatedIds": [
+        "first-non-repeating-number-java-streams"
+      ],
+      "codeLanguage": "java",
+      "createdAt": "2026-10-03T11:50:00.000Z",
+      "updatedAt": "2026-10-03T11:50:00.000Z"
+    },
+    {
       "id": "tight-coupling-problems",
       "group": "Languages & Frameworks",
       "topic": "Spring Boot",
@@ -259,21 +291,6 @@
       "codeLanguage": "typescript",
       "createdAt": "2026-10-03T11:30:00.000Z",
       "updatedAt": "2026-10-03T11:30:00.000Z"
-    },
-    {
-      "id": "longest-substring-without-repeating-characters",
-      "group": "Languages & Frameworks",
-      "topic": "Java",
-      "question": "How do you find the longest substring without repeating characters in Java?",
-      "answer": "```java\nimport java.util.*;\nclass Main {\n    public static void main(String[] args) {\n        String s = \"abcabcbb\";\n        Set<Character> set = new HashSet<>();\n\n        int left = 0;\n        int maxLength = 0;\n        int start = 0;\n\n        for (int right = 0; right < s.length(); right++) {\n\n            char ch = s.charAt(right);\n\n            while (set.contains(ch)) {\n                set.remove(s.charAt(left));\n                left++;\n            }\n\n            set.add(ch);\n\n            if (right - left + 1 > maxLength) {\n                maxLength = right - left + 1;\n                start = left;\n            }\n        }\n\n        System.out.println(s.substring(start, start + maxLength));\n    }\n}\n```\n\nOutput:\n\n```text\nabc\n```\n\n**How it works (sliding window)**\n\n1. Two pointers, `left` and `right`, mark a window. The `set` holds the characters currently inside the window, so the window never contains a repeated character.\n2. For each `right`, take the character `ch`.\n3. While `set` already contains `ch`, remove the character at `left` from the set and move `left` forward. This shrinks the window from the left until the duplicate is gone.\n4. Add `ch` to the set.\n5. If the window `right - left + 1` is longer than `maxLength`, save the new length and remember `start = left`.\n6. At the end, `s.substring(start, start + maxLength)` is the longest substring without repeating characters.\n\nFor `\"abcabcbb\"` the window grows to `abc` (length 3). When the second `a` arrives, the window shrinks from the left and moves on, and it never gets longer than 3, so the answer is `abc`.\n\nOther inputs: `\"bbbbb\"` gives `b`, and `\"pwwkew\"` gives `wke`.\n\n**Complexity**\n\n- Time: O(n). Each character is added to the set once and removed at most once.\n- Space: O(k), where k is the number of distinct characters in the window.\n\n**Note**\n\nIf there are several substrings with the same maximum length, this returns the first one. If you only need the length, print `maxLength` instead of the substring.",
-      "tags": [
-        "Sliding Window",
-        "HashSet",
-        "String"
-      ],
-      "codeLanguage": "java",
-      "createdAt": "2026-10-03T11:40:00.000Z",
-      "updatedAt": "2026-10-03T11:40:00.000Z"
     }
   ]
 }
