@@ -32,7 +32,7 @@
       "group": "Languages & Frameworks",
       "topic": "Java",
       "question": "What are the main features of Java 17?",
-      "answer": "### 1. Record\n\nA record is a concise way to create an immutable data class. Java automatically provides constructor, getters (`name()`), `equals()`, `hashCode()`, and `toString()`.\n\n```java\nrecord Employee(int id, String name) {}\n\nEmployee emp = new Employee(101, \"Rahul\");\n\nSystem.out.println(emp.id());    // 101\nSystem.out.println(emp.name());  // Rahul\n```\n\nPrinting the record itself uses the generated `toString()`:\n\n```java\nSystem.out.println(emp);  // Employee[id=101, name=Rahul]\n```\n\nA record is implicitly `final`, and its fields cannot be changed after the object is created.\n\n### 2. Sealed Classes\n\nA sealed class restricts which classes can extend or implement it. This is useful when you want to control the inheritance hierarchy.\n\n```java\nsealed class Vehicle permits Car, Bike {}\n\nfinal class Car extends Vehicle {}\n\nfinal class Bike extends Vehicle {}\n```\n\nHere, only `Car` and `Bike` are allowed to extend `Vehicle`.\n\nEach permitted subclass must be declared `final`, `sealed` or `non-sealed`.\n\n### 3. Pattern Matching for `instanceof`\n\nJava 17 allows you to declare the variable directly inside `instanceof`, avoiding explicit casting.\n\n**Before Java 17:**\n\n```java\nif (obj instanceof String) {\n    String str = (String) obj;\n    System.out.println(str.length());\n}\n```\n\n**Java 17:**\n\n```java\nif (obj instanceof String str) {\n    System.out.println(str.length());\n}\n```\n\nHere, `str` is automatically cast to `String` and can be used directly.",
+      "answer": "Java 17 is a long-term support (LTS) release. These three features are the ones to remember:\n\n| # | Feature | In one line | Finalized in |\n| --- | --- | --- | --- |\n| 1 | Record | A concise way to create an immutable data class | Java 16 |\n| 2 | Sealed Classes | Restrict which classes can extend or implement a class | Java 17 |\n| 3 | Pattern Matching for `instanceof` | Declare the variable inside `instanceof`, no explicit cast | Java 16 |\n\nRecords and pattern matching for `instanceof` became final in Java 16, and sealed classes became final in Java 17. All three are available in Java 17.\n\n### 1. Record\n\nA record is a concise way to create an immutable data class. Java automatically provides constructor, getters (`name()`), `equals()`, `hashCode()`, and `toString()`.\n\n```java\nrecord Employee(int id, String name) {}\n\nEmployee emp = new Employee(101, \"Rahul\");\n\nSystem.out.println(emp.id());    // 101\nSystem.out.println(emp.name());  // Rahul\n```\n\nPrinting the record itself uses the generated `toString()`:\n\n```java\nSystem.out.println(emp);  // Employee[id=101, name=Rahul]\n```\n\nA record is implicitly `final`, and its fields cannot be changed after the object is created.\n\n### 2. Sealed Classes\n\nA sealed class restricts which classes can extend or implement it. This is useful when you want to control the inheritance hierarchy.\n\n```java\nsealed class Vehicle permits Car, Bike {}\n\nfinal class Car extends Vehicle {}\n\nfinal class Bike extends Vehicle {}\n```\n\nHere, only `Car` and `Bike` are allowed to extend `Vehicle`.\n\nEach permitted subclass must be declared `final`, `sealed` or `non-sealed`.\n\n### 3. Pattern Matching for `instanceof`\n\nJava 17 allows you to declare the variable directly inside `instanceof`, avoiding explicit casting.\n\n**Before Java 17:**\n\n```java\nif (obj instanceof String) {\n    String str = (String) obj;\n    System.out.println(str.length());\n}\n```\n\n**Java 17:**\n\n```java\nif (obj instanceof String str) {\n    System.out.println(str.length());\n}\n```\n\nHere, `str` is automatically cast to `String` and can be used directly.",
       "tags": [
         "Java 17",
         "Record",
@@ -223,42 +223,6 @@
       ],
       "createdAt": "2026-10-03T10:21:00.000Z",
       "updatedAt": "2026-10-03T10:21:00.000Z"
-    },
-    {
-      "id": "angular-main-components",
-      "group": "Languages & Frameworks",
-      "topic": "Angular",
-      "question": "What are the main components of Angular?",
-      "answer": "Angular is a component-based frontend framework. The main building blocks I work with are Components, Templates, Directives, Services, Dependency Injection, Routing and Forms. In modern Angular, I also primarily work with Standalone Components.\n\n### 1. Components\n\nIn a real application, I usually keep components focused on presentation and user interaction, rather than putting business logic directly inside them.\n\n```typescript\n@Component({\n  selector: 'app-user',\n  templateUrl: './user.component.html'\n})\nexport class UserComponent {\n  users: User[] = [];\n}\n```\n\n### 2. Services\n\nServices are used for reusable business logic, API communication, state sharing, authentication, logging, etc. The component consumes the service instead of directly handling HTTP/business logic.\n\n```typescript\n@Injectable({\n  providedIn: 'root'\n})\nexport class UserService {\n\n  getUsers() {\n    return this.http.get<User[]>('/api/users');\n  }\n}\n```\n\n### 3. Dependency Injection\n\nAngular manages the creation and lifecycle of the dependency based on its provider configuration.\n\n```typescript\nprivate userService = inject(UserService);\n```\n\n### 4. Templates & Data Binding\n\nTemplates define the UI, and Angular provides different types of binding:\n\n```html\n<h2>{{ user.name }}</h2>\n\n<input [value]=\"user.name\">\n\n<button (click)=\"save()\">Save</button>\n```\n\n### 5. Directives\n\nDirectives allow us to change DOM behavior or structure.\n\n### 6. Routing\n\nAngular Router manages SPA navigation without requiring a complete page reload.\n\n```typescript\nconst routes: Routes = [\n  { path: 'users', component: UsersComponent },\n  { path: 'users/:id', component: UserDetailsComponent }\n];\n```\n\n### 7. Forms\n\nAngular provides:\n\n- Template-driven forms – suitable for simpler forms.\n- Reactive forms – preferred for complex enterprise forms because they provide better control over validation and form state.\n\nExample:\n\n```typescript\nloginForm = new FormGroup({\n  username: new FormControl(''),\n  password: new FormControl('')\n});\n```\n\n**Note:** Components handle the UI, Services handle reusable/business logic and API communication, DI manages dependencies, Directives control DOM behavior, Pipes handle presentation transformations, Routing manages navigation, Forms manage user input, and RxJS handles asynchronous and reactive programming. In modern Angular applications, I prefer Standalone Components and use lazy loading, route guards, reactive forms, and RxJS based on the application requirements.",
-      "tags": [
-        "Angular",
-        "Components",
-        "Services",
-        "Routing",
-        "Forms"
-      ],
-      "codeLanguage": "typescript",
-      "createdAt": "2026-10-03T11:20:00.000Z",
-      "updatedAt": "2026-10-03T11:20:00.000Z"
-    },
-    {
-      "id": "angular-component-lifecycle",
-      "group": "Languages & Frameworks",
-      "topic": "Angular",
-      "question": "Explain Angular component lifecycle.",
-      "answer": "Angular Component Lifecycle:\n\nThe lifecycle of angular component is:\n\n```text\nComponent Created\n      ↓\nconstructor()\n      ↓\nngOnChanges()\n      ↓\nngOnInit()\n      ↓\nngDoCheck()\n      ↓\nngAfterContentInit()\n      ↓\nngAfterContentChecked()\n      ↓\nngAfterViewInit()\n      ↓\nngAfterViewChecked()\n      ↓\n  Component Updates\n      ↓\nngOnChanges() / ngDoCheck()\n      ↓\n...\n      ↓\nngOnDestroy()\n```\n\n### 1. constructor()\n\nI generally avoid putting API calls or complex initialization logic here.\n\n```typescript\nconstructor(private userService: UserService) {}\n```\n\n### 2. ngOnChanges()\n\nCalled when an `@Input()` property receives a value or changes.\n\n```typescript\n@Input() userId!: number;\n\nngOnChanges(changes: SimpleChanges) {\n  console.log('Input changed', changes);\n}\n```\n\n### 3. ngOnInit()\n\nCalled once after Angular initializes the component's inputs.\n\n```typescript\nngOnInit() {\n  this.loadUsers();\n}\n```\n\n### 4. ngDoCheck()\n\nCalled during Angular's change-detection cycle.\n\n```typescript\nngDoCheck() {\n  // custom change detection logic\n}\n```\n\n### 5. ngAfterContentInit()\n\nCalled once after Angular projects external content into the component using:\n\n```html\n<ng-content></ng-content>\n```\n\n### 6. ngAfterContentChecked()\n\nCalled after Angular checks the projected content. Because it can run frequently during change detection, it should be used carefully.\n\n### 7. ngAfterViewInit()\n\nCalled once after the component's view and child views are initialized.\n\nThis is useful when you need access to:\n\n- DOM elements\n- `@ViewChild`\n- Child components\n\n### 8. ngAfterViewChecked()\n\nCalled after Angular checks the component's view and child views.\n\n### 9. ngOnDestroy()\n\nCalled immediately before Angular destroys the component. This is very important in real-world applications for cleanup.\n\n```typescript\nngOnDestroy() {\n  this.subscription.unsubscribe();\n}\n```",
-      "tags": [
-        "Angular",
-        "Lifecycle Hooks",
-        "ngOnInit",
-        "ngOnDestroy"
-      ],
-      "relatedIds": [
-        "angular-main-components"
-      ],
-      "codeLanguage": "typescript",
-      "createdAt": "2026-10-03T11:30:00.000Z",
-      "updatedAt": "2026-10-03T11:30:00.000Z"
     }
   ]
 }

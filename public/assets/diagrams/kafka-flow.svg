@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img" aria-label="Kafka producer, partitions and consumer group">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#6366f1"/>
+    </marker>
+    <style>text{font:600 14px system-ui,sans-serif;fill:#1e1b4b}.b{fill:#e0e7ff;stroke:#6366f1;stroke-width:2;rx:10}</style>
+  </defs>
+  <rect class="b" x="20" y="95" width="120" height="50"/><text x="80" y="125" text-anchor="middle">Producer</text>
+  <rect class="b" x="250" y="25" width="140" height="44"/><text x="320" y="52" text-anchor="middle">Partition 0</text>
+  <rect class="b" x="250" y="98" width="140" height="44"/><text x="320" y="125" text-anchor="middle">Partition 1</text>
+  <rect class="b" x="250" y="171" width="140" height="44"/><text x="320" y="198" text-anchor="middle">Partition 2</text>
+  <rect class="b" x="500" y="45" width="120" height="44"/><text x="560" y="72" text-anchor="middle">Consumer A</text>
+  <rect class="b" x="500" y="150" width="120" height="44"/><text x="560" y="177" text-anchor="middle">Consumer B</text>
+  <g stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#a)">
+    <path d="M140 110L248 50"/><path d="M140 120L248 120"/><path d="M140 130L248 192"/>
+    <path d="M390 47L498 62"/><path d="M390 120L498 160"/><path d="M390 193L498 178"/>
+  </g>
+</svg>
