@@ -232,6 +232,39 @@
       "updatedAt": "2026-10-03T10:05:00.000Z"
     },
     {
+      "id": "bounded-vs-unbounded-microservice",
+      "group": "Architecture & Messaging",
+      "topic": "Microservices",
+      "question": "What is the difference between a bounded and an unbounded microservice?",
+      "answer": "### Bounded Microservice\n\nA bounded microservice has a clear business responsibility and well-defined boundary. It owns its data, logic, and APIs for a specific business capability.\n\nExample:\n\n```text\nCustomer Service\n└── Customer Management\n\nAccount Service\n└── Account Operations\n\nLoan Service\n└── Loan Processing\n\nPayment Service\n└── Payment Processing\n```\n\n### Unbounded Microservice\n\nAn unbounded microservice has responsibilities that span multiple business domains and lacks clear boundaries.\n\nExample:\n\n```text\nCustomerAccountLoanService\n```\n\nThis service handles:\n\n- Customer management\n- Account operations\n- Loan processing\n- Notifications\n\n**Note:** The idea of a bounded microservice comes from the bounded context in Domain-Driven Design (DDD). \"Unbounded microservice\" is an informal term. A service that mixes several domains like this is often described as a \"god service\" or a mini-monolith.",
+      "tags": [
+        "Microservices",
+        "Bounded Context"
+      ],
+      "relatedIds": [
+        "what-are-microservices"
+      ],
+      "createdAt": "2026-10-03T12:00:00.000Z",
+      "updatedAt": "2026-10-03T12:00:00.000Z"
+    },
+    {
+      "id": "jpa-hibernate-short-answer",
+      "group": "Databases & Persistence",
+      "topic": "JPA / Hibernate",
+      "question": "Explain JPA and Hibernate in short.",
+      "answer": "**JPA** is a specification that provides a set of interfaces, such as `EntityManager`, and annotations such as `@Entity`, `@OneToMany`, and `@ManyToOne` for managing persistence and mapping Java objects to database tables.\n\n**Hibernate** is an ORM framework that implements the JPA specification. It handles actual database operations, such as generating and executing SQL queries, caching, and lazy loading.",
+      "tags": [
+        "JPA",
+        "Hibernate",
+        "ORM"
+      ],
+      "relatedIds": [
+        "jpa-vs-hibernate"
+      ],
+      "createdAt": "2026-10-03T12:15:00.000Z",
+      "updatedAt": "2026-10-03T12:20:00.000Z"
+    },
+    {
       "id": "what-is-kafka",
       "group": "Architecture & Messaging",
       "topic": "Kafka",
@@ -291,6 +324,27 @@
       "codeLanguage": "typescript",
       "createdAt": "2026-10-03T11:30:00.000Z",
       "updatedAt": "2026-10-03T11:30:00.000Z"
-    }
+    },
+    {
+  "id": "stream-distinct-sort-odd-before-even",
+  "group": "Languages & Frameworks",
+  "topic": "Java",
+  "question": "How do you remove duplicates from a list, sort it in descending order, and place odd numbers before even numbers using Java Streams?",
+  "answer": "```java\nimport java.util.*;\nimport java.util.stream.*;\n\nclass Main {\n    public static void main(String[] args) {\n\n        List<Integer> list = List.of(1, 2, 4, 2, 3, 7, 9, 3, 15, 12, 45);\n\n        List<Integer> result = list.stream()\n                .distinct()\n                .sorted(\n                        Comparator.comparingInt((Integer n) -> n % 2 == 0 ? 1 : 0)\n                                .thenComparing(Comparator.reverseOrder())\n                )\n                .collect(Collectors.toList());\n\n        for (int n : result) {\n            System.out.println(\" \" + n);\n        }\n    }\n}\n```\n\nOutput:\n\n```text\n 45\n 15\n 9\n 7\n 3\n 1\n 12\n 4\n 2\n```\n\n**How it works**\n\n1. `distinct()` removes duplicates, so `[1, 2, 4, 2, 3, 7, 9, 3, 15, 12, 45]` becomes `[1, 2, 4, 3, 7, 9, 15, 12, 45]`.\n2. `Comparator.comparingInt(n -> n % 2 == 0 ? 1 : 0)` gives each number a key: odd numbers get `0`, even numbers get `1`. Sorting is ascending by key, so all odd numbers come before all even numbers.\n3. `thenComparing(Comparator.reverseOrder())` is the tie-breaker. Numbers with the same key (both odd or both even) are sorted in descending order.\n4. `collect(Collectors.toList())` gathers the result into a new list.\n\nSo the two groups are sorted separately:\n\n```text\nOdd  group: 1, 3, 7, 9, 15, 45  -> 45, 15, 9, 7, 3, 1\nEven group: 2, 4, 12            -> 12, 4, 2\n```\n\nFinal result: `45, 15, 9, 7, 3, 1, 12, 4, 2`.\n\n**Notes**\n\n- The result is not one single descending list. It is odd numbers in descending order, followed by even numbers in descending order. If the interviewer wants plain descending order, use only `.sorted(Comparator.reverseOrder())`.\n- `(Integer n)` in the lambda is needed so Java can infer the type when you chain `thenComparing(...)` after `comparingInt(...)`.\n- Use `n % 2 == 0` rather than `n % 2 == 1` for the check. For negative odd numbers, `n % 2` gives `-1`, so a `== 1` check would treat them as even.\n- `System.out.println(\" \" + n)` prints each number on its own line. Use `System.out.print(n + \" \")` to print them on one line.\n\n**Complexity**\n\n- Time: O(n log n), because of sorting.\n- Space: O(n), for the distinct list and the result.",
+  "tags": [
+    "Java 8",
+    "Stream API",
+    "Comparator",
+    "distinct",
+    "sorted"
+  ],
+  "relatedIds": [
+    "java-8-features",
+    "first-non-repeating-number-java-streams"
+  ],
+  "codeLanguage": "java",
+  "createdAt": "2026-10-14T10:00:00.000Z",
+  "updatedAt": "2026-10-14T10:00:00.000Z"
+}
   ]
 }
